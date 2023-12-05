@@ -1,0 +1,255 @@
+.presentation h2{
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    margin-bottom: 0;
+    font-size: 40px;
+    line-height: 160px;
+    
+    font-weight: 500;
+    color: #000;
+}
+
+.sub-container{
+    font: inherit;
+    vertical-align: baseline;
+    padding: 0;
+    width: 1200px;
+    margin: 0px auto 40px;
+}
+
+.table-select{
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    zoom: 1;
+}
+
+.table-select table{
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    border-radius: 4px 4px 0 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-select th{
+    list-style: none;
+    font-feature-settings: "tnum";
+    border-collapse: separate;
+    border-spacing: 0;
+    box-sizing: border-box;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    word-break: break-word;
+    text-align: left;
+    transition: background .3s ease;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    height: 40px;
+    line-height: 20px;
+    padding: 10px 16px;
+    color: rgba(0, 0, 0, 0.85);
+    background: #fafafa;
+    border-bottom: 1px solid #e8e8e8;
+    border-top-left-radius: 4px;
+}
+
+.table-select td{
+    list-style: none;
+    font-feature-settings: "tnum";
+    color: rgba(0, 0, 0, 0.65);
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-sizing: border-box;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    word-break: break-word;
+    transition: background .3s;
+    overflow-wrap: break-word;
+    line-height: 20px;
+    padding: 15px 16px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.table-select a{
+    list-style: none;
+    font-feature-settings: "tnum";
+    border-collapse: separate;
+    border-spacing: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+    font-family: inherit;
+    text-transform: none;
+    margin: 0;
+    position: relative;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all .3s cubic-bezier(.645,.045,.355,1);
+    user-select: none;
+    touch-action: manipulation;
+    outline: 0;
+    line-height: 20px;
+    border-radius: 4px;
+    box-shadow: none;
+    font-size: 14px;
+    padding: 0;
+    color: #5d21d2;
+    border: none;
+    background: none!important;
+    display: block;
+    max-width: 240px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 20px;
+}
+
+.table-select tbody tr:hover{
+    background-color: #f1edfa;
+}
+
+.page-box{
+    font-feature-settings: "tnum";
+    word-break: break-all;
+    color: rgba(0, 0, 0, 0.65);
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    zoom: 1;
+    padding-top: 20px;
+}
+
+.page-box span{
+    font-feature-settings: "tnum";
+    word-break: break-all;
+    color: rgba(0, 0, 0, 0.65);
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    float: left;
+    line-height: 32px;
+}
+
+.pagination{
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    font-feature-settings: "tnum";
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: rgba(0, 0, 0, 0.65);
+    float: right;
+}
+
+
+
+footer {
+    font-feature-settings: "tnum";
+    word-break: break-all;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    font: inherit;
+    display: block;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+    padding: 24px 50px;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+    color: rgba(0, 0, 0, 0.65);
+    background: #f0f2f5;
+}
+
+footer div{
+    font-feature-settings: "tnum";
+    word-break: break-all;
+    -webkit-font-smoothing: antialiased;
+    color: rgba(0, 0, 0, 0.65);
+    box-sizing: border-box;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+ul{
+    font-feature-settings: "tnum";
+    word-break: break-all;
+    -webkit-font-smoothing: antialiased;
+    color: rgba(0, 0, 0, 0.65);
+    text-align: center;
+    box-sizing: border-box;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer ul li{
+    font-feature-settings: "tnum";
+    word-break: break-all;
+    -webkit-font-smoothing: antialiased;
+    color: rgba(0, 0, 0, 0.65);
+    box-sizing: border-box;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+    padding: 0 15px;
+}
+
+footer ul li a{
+    font-feature-settings: "tnum";
+    word-break: break-all;
+    -webkit-font-smoothing: antialiased;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    transition: color .3s;
+    touch-action: manipulation;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    background-color: transparent;
+    color: #666;
+}

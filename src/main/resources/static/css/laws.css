@@ -1,0 +1,206 @@
+body {
+    margin: 0;
+    color: rgba(0, 0, 0, .85);
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    background-color: #eee!important;
+    -webkit-font-feature-settings: "tnum", "tnum";
+    font-feature-settings: "tnum", "tnum";
+    width: 100%;
+    height: 100%;
+}
+header {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    --antd-wave-shadow-color: #1890ff;
+    --scroll-bar: 0;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif !important;
+    font-size: 14px;
+    font-variant: tabular-nums;
+    list-style: none;
+    font-feature-settings: "tnum", "tnum";
+    cursor: default;
+    text-align: left;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    color: rgba(0, 0, 0, .85);
+    line-height: 64px;
+    position: sticky;
+    height: 60px;
+    top: 0;
+    z-index: 200;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+    padding: 0;
+    min-width: 1140px;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* 上导航 */
+.sHeader {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    --antd-wave-shadow-color: #1890ff;
+    --scroll-bar: 0;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif !important;
+    font-size: 14px;
+    font-variant: tabular-nums;
+    list-style: none;
+    font-feature-settings: "tnum", "tnum";
+    cursor: default;
+    text-align: left;
+    color: rgba(0, 0, 0, .85);
+    line-height: 64px;
+    margin: 0 auto;
+    max-width: 1440px;
+    min-width: 1140px;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.sHeader_left {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.sHeader_logo {
+    width: 165px;
+    height: 39px;
+    margin-right: 20px;
+    background: url(../images/logo.png) 0 0 no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.sHeader_right {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.sHeader_navList {
+    display: flex;
+    align-items: center;
+}
+
+.sHeader_navItem {
+    margin-right: 30px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.sHeader_navItem a:hover {
+    transition: 0.2s;
+}
+
+.sHeader_navItem a:hover {
+    font-size: 1.20em;
+    font-weight: bolder;
+}
+
+.sHeader_fire {
+    display: inline-block;
+    width: 14px;
+    height: 15px;
+    margin-left: 6px;
+    margin-top: -3px;
+    background: url(../images/fire.svg) 50% no-repeat;
+    background-size: cover;
+}
+/*!* 左侧盒子 *!*/
+/*.left_box {*/
+/*    position: fixed;*/
+/*    top:37.5%;*/
+/*    left: -20px;*/
+/*    width: 135px;*/
+/*    height: 220px;*/
+/*    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif !important;*/
+/*    box-shadow: 0 2px 10px rgba(0, 0, 0, .1);*/
+/*    background-color: white;*/
+/*}*/
+
+/*.left_box ul {*/
+/*    font-size: 16px;*/
+/*    list-style:none;*/
+/*}*/
+
+/*.left_box ul li {*/
+/*    margin: 15px auto;*/
+/*}*/
+
+/*.left_box ul li a:hover {*/
+/*    color: #f7360a;*/
+/*}*/
+
+
+/* 中间总结主体 */
+.middle_box {
+    width:900px;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+    font-size: 16px;
+    line-height: 30px;
+}
+.middle_box h3 {
+    text-align: center;
+    font-size: 18px;
+}
+
+.middle_box span {
+    margin-left: 2em;
+    margin-right: 8px;
+    text-indent: 2em;
+    font-weight: bold;
+}
+
+.middle_box div {
+    text-indent: 2em;
+}
+
+/* 右侧导航 */
+.navigation {
+    position: fixed;
+    top:40%;
+    right: 80px;
+    height: 220px;
+    width: 200px;
+}
+
+.navigation li {
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 35px;
+    list-style-type: upper-roman;
+    color: grey;
+}
+
+.navigation li:hover {
+    color: #f7360a;
+    overflow: visible;
+    white-space: normal;
+}
+
+.navigation li a {
+    color: grey;
+}
+
+.navigation li a:hover {
+    color: #f7360a;
+}

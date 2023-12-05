@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/api.css">
+    <style>
+        .markdown-section {
+            /*font-family: var(--base-font-family);*/
+            --docsifytabs-margin: 1.5em 0;
+            --docsifytabs-tab-color--active: inherit;
+            --docsifytabs-tab-highlight-px: 3px;
+            /*font-weight: var(--base-font-weight);*/
+            /*line-height: var(--base-line-height);*/
+            /*letter-spacing: var(--base-letter-spacing);*/
+            /*color: var(--base-color);*/
+            box-sizing: inherit;
+            font-size: inherit;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-text-size-adjust: none;
+            position: relative;
+            /*max-width: var(--content-max-width);*/
+            margin: 0px auto;
+            padding: 2rem 260px;
+        }
+
+        .page-title {
+            padding-bottom: 15px;
+            border-bottom: 1px solid #E6E6E6;
+            margin-bottom: 34px;
+        }
+
+        .markdown-section h1 {
+            --sidebar-nav-strong-border-width: 0 0 1px 0;
+            --sidebar-nav-strong-font-size: smaller;
+            --sidebar-nav-strong-margin: 2em -25px 0.75em 0;
+            --sidebar-nav-strong-padding: 0.25em 0 0.75em 0;
+            --sidebar-nav-strong-text-transform: uppercase;
+            --sidebar-nav-link-border-width: 0 4px 0 0;
+            --sidebar-nav-link-text-decoration: none;
+            --heading-h1-font-size: 22px;
+            --heading-h1-font-weight: 500;
+            --heading-h1-margin: 4px;
+            --heading-h2-font-size: 20px;
+            --heading-h2-border-color: transparent;
+            --heading-h3-font-size: 16px;
+            --sidebar-background: #F7F7F7;
+            /*margin: var(--heading-h1-margin, var(--heading-margin));*/
+            /*padding: var(--heading-h1-padding, var(--heading-padding));*/
+            /*border-width: var(--heading-h1-border-width, 0);*/
+            /*border-style: var(--heading-h1-border-style);*/
+            /*border-color: var(--heading-h1-border-color);*/
+            /*font-family: var(--heading-h1-font-family, var(--heading-font-family));*/
+            font-size: var(--heading-h1-font-size);
+            /*font-weight: var(--heading-h1-font-weight, var(--heading-font-weight));*/
+            /*line-height: var(--base-line-height);*/
+            /*color: var(--heading-h1-color, var(--heading-color));*/
+        }
+
+        h3 {
+            margin: 35px 0 0;
+        }
+
+        span {
+            color: #999999;
+            margin-right: 15px;
+        }
+
+        .post {
+            background-color: #F7360A;
+        }
+
+        i {
+            font-style: italic;
+        }
+
+        tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+            border-bottom: 1px solid #E6E6E6;
+            height: 40px;
+        }
+
+        th {
+            display: table-cell;
+            vertical-align: inherit;
+            font-weight: bold;
+            text-align: left;
+            padding: 5px;
+            background-color: rgb(234, 234, 234);
+        }
+
+        .request-method.get {
+            background-color: #999999;
+        }
+
+        .request-method {
+            display: inline-block;
+            color: #ffffff;
+            border-radius: 2px;
+            width: 44px;
+            line-height: 24px;
+            font-style: normal;
+            margin-right: 6px;
+            text-align: center;
+        }
+
+        .markdown-section .table-wrapper table {
+            display: table;
+            width: 100%;
+        }
+
+        .markdown-section table {
+            display: block;
+            overflow: auto;
+            margin: 1rem 0;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+
+
+        table {
+            display: table;
+            border-collapse: separate;
+            box-sizing: border-box;
+            text-indent: initial;
+            border-spacing: 2px;
+            border-color: gray;
+        }
+
+        .markdown-section thead {
+            /*border-color: var(--table-head-border-color);*/
+            border-style: solid;
+            border-width: 0;
+            /*background: var(--table-head-background);*/
+        }
+
+        .markdown-section tbody {
+            /*border-color: var(--table-body-border-color);*/
+            border-style: solid;
+            border-width: 0;
+        }
+
+        tbody {
+            display: table-row-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 网站最上方的导航栏模块 -->
+    <header>
+        <div class="sHeader">
+            <!-- 最左侧的logo设置 -->
+            <div class="sHeader_left">
+                <a class="sHeader_logo" href="index.html" style="display: block;"></a>
+            </div>
+            <!-- 右侧的三个导航 -->
+            <div class="sHeader_right">
+                <div class="sHeader_navList">
+                    <div class="sHeader_navItem">
+                        <a href="index.html">网址检测</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="analysis.html">检测结果</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="publicity.html">反诈宣传</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="chat.html">反诈智聊</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="api.html">API</a>
+                        <i class="sHeader_fire"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 网站主体架构 -->
+    <main>
+        <article class="markdown-section" id="main">
+            <!-- 第一部分 -->
+            <div class="page-title">
+                <h1 class="real-title">URL 分析</h1>
+            </div>
+            <h3>
+                请求方法
+            </h3>
+            <p>
+                <span>
+                    接口地址：
+                </span>
+                <a href="">
+                    /api/sendWhiteURL
+                </a>
+            </p>
+            <p>
+                <span>
+                    请求方式：
+                </span>
+                <i class="request-method get">
+                    GET
+                </i>
+            </p>
+            <h3>
+                请求参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table id="">
+                    <thead>
+                        <tr>
+                            <th>
+                                序号
+                            </th>
+                            <th>
+                                参数名称
+                            </th>
+                            <th>
+                                必选
+                            </th>
+                            <th>
+                                类型
+                            </th>
+                            <th>
+                                描述
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                无
+                            </td>
+                            <td>
+                                否
+                            </td>
+                            <td>
+                                null
+                            </td>
+                            <td>
+                                无
+                            </td>
+                        </tr>
+
+                </table>
+            </div>
+            <h3>
+                响应参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                序号
+                            </th>
+                            <th>
+                                参数名称
+                            </th>
+                            <th>
+                                类型
+                            </th>
+                            <th>
+                                描述
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                list
+                            </td>
+                            <td>
+                                Object
+                            </td>
+                            <td>
+                                返回数据库存储的URL白名单
+                            </td>
+                        </tr>
+
+                </table>
+            </div>
+            <!-- 第二部分 -->
+            <h3>
+                请求方法
+            </h3>
+            <p>
+                <span>
+                    请求地址：
+                </span>
+                <a href="">
+                    /api/sendBlackURL
+                </a>
+            </p>
+            <p>
+                <span>
+                    请求方式：
+                </span>
+                <i class="request-method get">
+                    GET
+                </i>
+            </p>
+            <h3>
+                请求参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            必选
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            无
+                        </td>
+                        <td>
+                            否
+                        </td>
+                        <td>
+                            null
+                        </td>
+                        <td>
+                            无
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <h3>
+                响应参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            list
+                        </td>
+                        <td>
+                            Object
+                        </td>
+                        <td>
+                            返回数据库存储的URL黑名单
+                        </td>
+                    </tr>
+                </table>
+            </div>
+<!--            第三部分-->
+            <h3>
+                请求方法
+            </h3>
+            <p>
+                <span>
+                    请求地址：
+                </span>
+                <a href="">
+                    /api/sendMessage
+                </a>
+            </p>
+            <p>
+                <span>
+                    请求方式：
+                </span>
+                <i class="request-method get">
+                    GET
+                </i>
+            </p>
+            <h3>
+                请求参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            必选
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            url
+                        </td>
+                        <td>
+                            是
+                        </td>
+                        <td>
+                            String
+                        </td>
+                        <td>
+                            查询后台数据库中相关url的信息
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <h3>
+                响应参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            cheatWebsiteJson
+                        </td>
+                        <td>
+                            Json
+                        </td>
+                        <td>
+                            若数据库中存储了相关url，则cheatWebsite返回该url在数据库中的基本信息,code=200；
+                            若没有，则cheatWebsite返回null，code=300;
+                            若查询失败，则code=400
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--            第四部分-->
+            <h3>
+                请求方法
+            </h3>
+            <p>
+                <span>
+                    请求地址：
+                </span>
+                <a href="">
+                    /api/getURL
+                </a>
+            </p>
+            <p>
+                <span>
+                    请求方式：
+                </span>
+                <i class="request-method get">
+                    GET
+                </i>
+            </p>
+            <h3>
+                请求参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            必选
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            url
+                        </td>
+                        <td>
+                            是
+                        </td>
+                        <td>
+                            String
+                        </td>
+                        <td>
+                            调用服务端全部模型检测网站，输出网址相关信息
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <h3>
+                响应参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            cheatWebsite
+                        </td>
+                        <td>
+                            Object
+                        </td>
+                        <td>
+                            返回调用模型后输出的url信息，并存储至数据库中
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--            第六部分-->
+            <h3>
+                请求方法
+            </h3>
+            <p>
+                <span>
+                    请求地址：
+                </span>
+                <a href="">
+                    /api/runNCMModel
+                </a>
+            </p>
+            <p>
+                <span>
+                    请求方式：
+                </span>
+                <i class="request-method get">
+                    GET
+                </i>
+            </p>
+            <h3>
+                请求参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            必选
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            url
+                        </td>
+                        <td>
+                            是
+                        </td>
+                        <td>
+                            String
+                        </td>
+                        <td>
+                            调用最近邻类别平均分类器模型检测网址
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <h3>
+                响应参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            typeJson
+                        </td>
+                        <td>
+                            Json
+                        </td>
+                        <td>
+                            type返回了网址的类型，若code=200，则检测成功；若code=400，系统出现异常
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--            第七部分-->
+            <h3>
+                请求方法
+            </h3>
+            <p>
+                <span>
+                    请求地址：
+                </span>
+                <a href="">
+                    /api/runDTModel
+                </a>
+            </p>
+            <p>
+                <span>
+                    请求方式：
+                </span>
+                <i class="request-method get">
+                    GET
+                </i>
+            </p>
+            <h3>
+                请求参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            必选
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            url
+                        </td>
+                        <td>
+                            是
+                        </td>
+                        <td>
+                            String
+                        </td>
+                        <td>
+                            调用决策树分类模型检测网址
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <h3>
+                响应参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            typeJson
+                        </td>
+                        <td>
+                            Json
+                        </td>
+                        <td>
+                            type返回了网址的类型，若code=200，则检测成功；若code=400，系统出现异常
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--            第八部分-->
+            <h3>
+                请求方法
+            </h3>
+            <p>
+                <span>
+                    请求地址：
+                </span>
+                <a href="">
+                    /api/runRFModel
+                </a>
+            </p>
+            <p>
+                <span>
+                    请求方式：
+                </span>
+                <i class="request-method get">
+                    GET
+                </i>
+            </p>
+            <h3>
+                请求参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            必选
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            url
+                        </td>
+                        <td>
+                            是
+                        </td>
+                        <td>
+                            String
+                        </td>
+                        <td>
+                            调用随机森林模型检测网址
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <h3>
+                响应参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            typeJson
+                        </td>
+                        <td>
+                            Json
+                        </td>
+                        <td>
+                            type返回了网址的类型，若code=200，则检测成功；若code=400，系统出现异常
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--            第九部分-->
+            <h3>
+                请求方法
+            </h3>
+            <p>
+                <span>
+                    请求地址：
+                </span>
+                <a href="">
+                    /api/runSVMModel
+                </a>
+            </p>
+            <p>
+                <span>
+                    请求方式：
+                </span>
+                <i class="request-method get">
+                    GET
+                </i>
+            </p>
+            <h3>
+                请求参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            必选
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            url
+                        </td>
+                        <td>
+                            是
+                        </td>
+                        <td>
+                            String
+                        </td>
+                        <td>
+                            调用支持向量机模型检测网址
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <h3>
+                响应参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            typeJson
+                        </td>
+                        <td>
+                            Json
+                        </td>
+                        <td>
+                            type返回了网址的类型，若code=200，则检测成功；若code=400，系统出现异常
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--            第十部分-->
+            <h3>
+                请求方法
+            </h3>
+            <p>
+                <span>
+                    请求地址：
+                </span>
+                <a href="">
+                    /api/runABModel
+                </a>
+            </p>
+            <p>
+                <span>
+                    请求方式：
+                </span>
+                <i class="request-method get">
+                    GET
+                </i>
+            </p>
+            <h3>
+                请求参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            必选
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            url
+                        </td>
+                        <td>
+                            是
+                        </td>
+                        <td>
+                            String
+                        </td>
+                        <td>
+                            调用AdaBoost模型检测网址
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <h3>
+                响应参数说明
+            </h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            描述
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            typeJson
+                        </td>
+                        <td>
+                            Json
+                        </td>
+                        <td>
+                            type返回了网址的类型，若code=200，则检测成功；若code=400，系统出现异常
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+
+
+        </article>
+
+    </main>
+</body>
+
+</html>

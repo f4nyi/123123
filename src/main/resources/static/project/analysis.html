@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析结果</title>
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/analysis.css">
+    <style>
+        .item{
+            font-feature-settings: "tnum";
+            color: rgba(0, 0, 0, 0.65);
+            box-sizing: border-box;
+            font: inherit;
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            margin-right: 8px;
+            vertical-align: middle;
+            font-family: Arial;
+            text-align: center;
+            list-style: none;
+            outline: 0;
+            cursor: pointer;
+            user-select: none;
+            min-width: 30px;
+            height: 30px;
+            line-height: 28px;
+            background-color: #fff;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+        }
+
+        .item:hover{
+            border-color: #5D21D2;
+        }
+
+        /*footer {*/
+        /*    position: fixed; !* 将 footer 定位为固定位置 *!*/
+        /*    bottom: 0; !* 将 footer 定位在页面底部 *!*/
+        /*    width: 100%; !* 设置 footer 宽度为 100% *!*/
+        /*    text-align: center; !* 设置 footer 内容居中 *!*/
+        /*}*/
+    </style>
+</head>
+
+<body>
+    <!-- 网站最上方的导航栏模块 -->
+    <header>
+        <div class="sHeader">
+            <!-- 最左侧的logo设置 -->
+            <div class="sHeader_left">
+                <a class="sHeader_logo" href="index.html" style="display: block;"></a>
+            </div>
+            <!-- 右侧的三个导航 -->
+            <div class="sHeader_right">
+                <div class="sHeader_navList">
+                    <div class="sHeader_navItem">
+                        <a href="index.html">网址检测</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="analysis.html">检测结果</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="publicity.html">反诈宣传</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="chat.html">反诈智聊</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="api.html">API</a>
+                        <i class="sHeader_fire"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 网站主体架构 -->
+    <main class="presentation">
+        <!-- 上方简介“分析结果” -->
+        <div>
+            <h2>检测结果</h2>
+        </div>
+        <!-- 分析结果的主体部分，分为两部分 -->
+        <div class="sub-container">
+            <!-- 第一部分：列表显示数据库中调用的内容 -->
+            <div class="table-select">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>URL</th>
+                            <th>HTTP响应码</th>
+                            <th>是否恶意</th>
+                            <th>URL类型</th>
+                            <th>上传时间</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list">
+                    </tbody>
+                </table>
+            </div>
+            <!-- 第二部分：页码跳转 -->
+            <div class="page-box">
+                <span id="totalCount">共n条数据</span>
+                <ul class="pagination" id="buttonList">
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <ul>
+                <li><a href="">网站简介</a></li>
+                <li><a href="">服务条款</a></li>
+                <li><a href="">联系我们</a></li>
+                <li><a href="">更新日志</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../js/jquery-3.6.4.js"></script>
+<script>
+    var type=['正常','购物消费','婚恋交友','假冒身份','钓鱼网站','冒充公检法','平台诈骗','招聘兼职','杀猪盘','博彩赌博','信贷理财','刷单诈骗','中奖诈骗']
+    var currentPage=1;//当前页数
+    var pageSize=10;//一页包含的条数
+    var buttonNumber;//按钮数量
+
+    window.onload=function (){
+        axios({
+            method: "get",
+            url: "http://localhost:8080/url/getList?currentPage="+currentPage+"&pageSize="+pageSize
+        }).then(function (resp) {
+            let cheatWebsiteBean=resp.data.data;
+            buttonNumber=cheatWebsiteBean.totalCount/pageSize;
+            let buttonUI="";
+            let listUI="";
+            document.getElementById("totalCount").innerHTML="共"+cheatWebsiteBean.totalCount+"条数据";
+            for (let i = 0; i < cheatWebsiteBean.rows.length; i++) {
+                listUI+="<tr>\n" +
+                    "                            <td><a href='report.html?url="+cheatWebsiteBean.rows[i].url+"'>"+cheatWebsiteBean.rows[i].url+"</a></td>\n" +
+                    "                            <td>"+cheatWebsiteBean.rows[i].stat+"</td>\n" +
+                    "                            <td id='cheat_eyi_"+(i+1)+"'></td>\n" +
+                    "                            <td id='cheat_type_"+(i+1)+"'></td>\n" +
+                    "                            <td>"+cheatWebsiteBean.rows[i].timeChuo+"</td>\n" +
+                    "                        </tr>"
+            }
+            document.getElementById("list").innerHTML=listUI;
+
+            for (let i = 0; i < buttonNumber; i++) {
+                buttonUI+="  <li class=\"item\" onclick='pagefunction(this)' value='"+(i+1)+"'><a>"+(i+1)+"</a></li>"
+            }
+            document.getElementById("buttonList").innerHTML=buttonUI;
+
+            for (let i = 0; i < cheatWebsiteBean.rows.length; i++){
+                let arr=Object.values(cheatWebsiteBean.rows[i]);
+                let flag=[0,0,0,0,0,0,0,0,0,0,0,0,0];
+                let flag_0=0;//安全的个数
+                let flag_1=0;//危险的个数
+
+                for (let j = arr.length-7; j < arr.length-1; j++) {
+                    if(arr[j]==='0'){
+                        flag_0++;
+                        flag[0]++;
+                    }
+                    else if (arr[j] !== ''){
+                        flag_1++;
+                        flag[arr[j]]++;
+                    }
+                }
+                if(flag_0>flag_1){
+                    document.getElementById("cheat_eyi_" + (i + 1).toString()).innerHTML="安全";
+                }else {
+                    document.getElementById("cheat_eyi_" + (i + 1).toString()).innerHTML="恶意";
+                }
+                let max=flag[0];
+                let max_i=0;
+                for (let j = 1; j < flag.length; j++) {
+                    if(max<flag[j]){
+                        max=flag[j];
+                        max_i=j;
+                    }
+                }
+                document.getElementById("cheat_type_" + (i + 1).toString()).innerHTML=type[max_i];
+
+            }
+        });
+    }
+
+    function pagefunction(obj){
+        var a=$(obj).attr("value");
+        currentPage=a;
+        axios({
+            method: "get",
+            url: "http://localhost:8080/url/getList?currentPage="+currentPage+"&pageSize="+pageSize
+        }).then(function (resp) {
+            let cheatWebsiteBean=resp.data.data;
+            let listUI="";
+            for (let i = 0; i < cheatWebsiteBean.rows.length; i++) {
+                listUI+="<tr>\n" +
+                    "                            <td><a href='report.html?url="+cheatWebsiteBean.rows[i].url+"'>"+cheatWebsiteBean.rows[i].url+"</a></td>\n" +
+                    "                            <td>"+cheatWebsiteBean.rows[i].stat+"</td>\n" +
+                    "                            <td id='cheat_eyi_"+(i+1)+"'></td>\n" +
+                    "                            <td id='cheat_type_"+(i+1)+"'></td>\n" +
+                    "                            <td>"+cheatWebsiteBean.rows[i].timeChuo+"</td>\n" +
+                    "                        </tr>"
+            }
+            document.getElementById("list").innerHTML=listUI;
+            for (let i = 0; i < cheatWebsiteBean.rows.length; i++){
+                let arr=Object.values(cheatWebsiteBean.rows[i]);
+                let flag=[0,0,0,0,0,0,0,0,0,0,0,0,0];
+                let flag_0=0;
+                let flag_1=0;
+                for (let j = arr.length-7; j < arr.length-1; j++) {
+                    if(arr[j]==='0'){
+                        flag_0++;
+                        flag[0]++;
+                    }
+                    else if (arr[j] !== ''){
+                        flag_1++;
+                        flag[arr[j]]++;
+                    }
+                }
+                if(flag_0>flag_1){
+                    document.getElementById("cheat_eyi_" + (i + 1).toString()).innerHTML="安全";
+                }else {
+                    document.getElementById("cheat_eyi_" + (i + 1).toString()).innerHTML="恶意";
+                }
+                let max=flag[0];
+                let max_i=0;
+                for (let j = 1; j < flag.length; j++) {
+                    if(max<flag[j]){
+                        max=flag[j];
+                        max_i=j;
+                    }
+                }
+                console.log(flag);
+                console.log(max_i);
+                document.getElementById("cheat_type_" + (i + 1).toString()).innerHTML=type[max_i];
+
+            }
+        });
+    }
+</script>
+</html>

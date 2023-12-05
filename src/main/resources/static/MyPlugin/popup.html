@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello world</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/popup.js"></script>
+</head>
+<body style="width: 200px; height: 200px;">
+    <h1><a href="https://www.bilibili.com/" target="_blank">官网</a></h1>
+    <p id="title">
+        本插件可以自动实现对于涉诈网址的识别分类，更多详情请点击上方的官网链接。
+    </p>
+    <script src="../js/axios-0.18.0.js"></script>
+    <script>
+        var id=0;
+        window.onload =function () {
+            var params=location.search.substr(1);
+            var arr=params.split('=');
+            if(typeof (arr[1])=="undefined"){
+                id=1;
+            }
+            else {
+                id=arr[1];
+            }
+            axios({
+                method: "get",
+                url: "http://localhost:8080/trial_type_demo1/news/init"
+            }).then(function (resp) {
+
+                let News = resp.data;
+                document.getElementById("title").innerHTML = News.title;
+                // document.getElementById("time").innerHTML = "时间：" + News.time;
+                // document.getElementById("web").href = News.website;
+                // document.getElementById("type").innerHTML = "类型：" + News.type_names[News.type-1];
+                // document.getElementById("content").innerHTML = News.content;
+            });
+        }
+    </script>
+</body>
+</html>

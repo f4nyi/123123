@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网址检测</title>
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/index.css">
+
+    <!-- 引入 layui.css -->
+    <link href="//unpkg.com/layui@2.8.0/dist/css/layui.css" rel="stylesheet">
+    <style>
+        .layui-btn-ling {
+            background-color: #005cbf;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 网站最上方的导航栏模块 -->
+    <header>
+        <div class="sHeader">
+            <!-- 最左侧的logo设置 -->
+            <div class="sHeader_left">
+                <a class="sHeader_logo" href="#" style="display: block;"></a>
+            </div>
+            <!-- 右侧的三个导航 -->
+            <div class="sHeader_right">
+                <div class="sHeader_navList">
+                    <div class="sHeader_navItem">
+                        <a href="index.html">网址检测</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="analysis.html">检测结果</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="publicity.html">反诈宣传</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="chat.html">反诈智聊</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="api.html">API</a>
+                        <i class="sHeader_fire"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 网站主体架构 -->
+    <main class="content">
+        <div class="container">
+            <!-- 最上方的logo界面设计 -->
+            <div class="styles_logo"></div>
+            <!-- 表单界面 -->
+            <div style="width: 650px; position: relative; left:28%;">
+                <form class="layui-form" action="form.html">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">涉诈URL</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="url" lay-verify="urlVerify" placeholder="请输入" autocomplete="off"
+                                class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">诈骗类型</label>
+                        <div class="layui-input-block">
+                            <select name="type" lay-filter="aihao">
+                                <option value="" selected></option>
+                                <option value="1">购物消费</option>
+                                <option value="2">婚恋交友</option>
+                                <option value="3">假冒身份</option>
+                                <option value="4">钓鱼网站</option>
+                                <option value="5">冒充公检法</option>
+                                <option value="6">平台诈骗</option>
+                                <option value="7">招聘兼职</option>
+                                <option value="8">杀猪盘</option>
+                                <option value="9">博彩赌博</option>
+                                <option value="10">信贷理财</option>
+                                <option value="11">刷单诈骗</option>
+                                <option value="12">中奖诈骗</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">举报原因</label>
+                        <div class="layui-input-block">
+                            <textarea name='reason' lay-verify="required" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="submit" class="layui-btn layui-btn-ling" lay-submit lay-filter="demo1">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            <a href="accu_sum.html"><button type="button" class="layui-btn layui-btn-normal">举报总览</button></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="../js/axios-0.18.0.js"></script>
+    <!-- 引入 layui.js -->
+    <script src="//unpkg.com/layui@2.8.0/dist/layui.js"></script>
+    <script>
+        // layui
+        layui.use(['form', 'laydate'], function () {
+            var form = layui.form;
+            var layer = layui.layer;
+            var laydate = layui.laydate;
+
+            // 自定义验证规则
+            form.verify({
+                urlVerify: [
+                    /^((https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w.-]*)*\/?)|(^(?!https?:\/\/)([\da-z.-]+)\.([a-z.]{2,6})([\/\w.-]*)*\/?)$/,
+                    '请输入正确地址'
+                ]
+            });
+
+            // 提交事件
+            form.on('submit(demo1)', function (data) {
+                var field = data.field; // 获取表单字段值
+                // 显示填写结果，仅作演示用
+                // layer.alert(JSON.stringify(field), {
+                //     title: '当前填写的字段值'
+                // });
+                laydate.render({
+                    type: 'date',
+                    value: new Date(new Date())
+                });
+
+                var time = new Date();
+                var date = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate() + ' ' + time.getHours()
+                    + ':' + time.getMinutes() + ':' + time.getSeconds();
+                field.date = date
+
+                // 此处可执行 Ajax 等操作
+                axios({
+                    method: "post",
+                    url: "http://localhost:8080/accusation/sendMessage",
+                    data: field
+                }).then(function (resp) {
+                    layer.alert(JSON.stringify(field), {
+                        title: '传输成功'
+                    });
+                    window.location.href='http://localhost:8080/accu_sum.html'
+                });
+
+                // …
+                return false; // 阻止默认 form 跳转
+            });
+        });
+    </script>
+</body>
+
+</html>

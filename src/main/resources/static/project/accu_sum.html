@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>举报总览</title>
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/analysis.css">
+    <style>
+        .item {
+            font-feature-settings: "tnum";
+            color: rgba(0, 0, 0, 0.65);
+            box-sizing: border-box;
+            font: inherit;
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            margin-right: 8px;
+            vertical-align: middle;
+            font-family: Arial;
+            text-align: center;
+            list-style: none;
+            outline: 0;
+            cursor: pointer;
+            user-select: none;
+            min-width: 30px;
+            height: 30px;
+            line-height: 28px;
+            background-color: #fff;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+        }
+
+        .item:hover {
+            border-color: #5D21D2;
+        }
+
+        /*footer {*/
+        /*    position: fixed; !* 将 footer 定位为固定位置 *!*/
+        /*    bottom: 0; !* 将 footer 定位在页面底部 *!*/
+        /*    width: 100%; !* 设置 footer 宽度为 100% *!*/
+        /*    text-align: center; !* 设置 footer 内容居中 *!*/
+        /*}*/
+    </style>
+</head>
+
+<body>
+<!-- 网站最上方的导航栏模块 -->
+<header>
+    <div class="sHeader">
+        <!-- 最左侧的logo设置 -->
+        <div class="sHeader_left">
+            <a class="sHeader_logo" href="index.html" style="display: block;"></a>
+        </div>
+        <!-- 右侧的三个导航 -->
+        <div class="sHeader_right">
+            <div class="sHeader_navList">
+                <div class="sHeader_navItem">
+                    <a href="index.html">网址检测</a>
+                </div>
+                <div class="sHeader_navItem">
+                    <a href="analysis.html">检测结果</a>
+                </div>
+                <div class="sHeader_navItem">
+                    <a href="publicity.html">反诈宣传</a>
+                </div>
+                <div class="sHeader_navItem">
+                    <a href="chat.html">反诈智聊</a>
+                </div>
+                <div class="sHeader_navItem">
+                    <a href="api.html">API</a>
+                    <i class="sHeader_fire"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- 网站主体架构 -->
+<main class="presentation">
+    <!-- 上方简介“分析结果” -->
+    <div>
+        <h2>举报总览</h2>
+    </div>
+    <!-- 分析结果的主体部分，分为两部分 -->
+    <div class="sub-container">
+        <!-- 第一部分：列表显示数据库中调用的内容 -->
+        <div class="table-select">
+            <table>
+                <thead>
+                <tr>
+                    <th>疑似恶意URL</th>
+                    <th>疑似诈骗类型</th>
+                    <th>举报原因</th>
+                    <th>举报时间</th>
+                </tr>
+                </thead>
+                <tbody id="list">
+                <tr>
+                    <td>www.baidu.com</td>
+                    <td>婚恋交友</td>
+                    <td>没什么原因没什么原因没什么原因没什么原因没什</td>
+                    <td>2023/7/25</td>
+                </tr>
+                <tr>
+                    <td>www.baidu.com</td>
+                    <td>婚恋交友</td>
+                    <td>没什么原因没什么原因没什么原因没什原因没什么原因</td>
+                    <td>2023/7/25</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 第二部分：页码跳转 -->
+        <div class="page-box">
+            <span id="totalCount">共n条数据</span>
+            <ul class="pagination" id="buttonList">
+            </ul>
+        </div>
+    </div>
+</main>
+<footer>
+    <div>
+        <ul>
+            <li><a href="">网站简介</a></li>
+            <li><a href="">服务条款</a></li>
+            <li><a href="">联系我们</a></li>
+            <li><a href="">更新日志</a></li>
+        </ul>
+    </div>
+</footer>
+</body>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../js/jquery-3.6.4.js"></script>
+<script>
+    var type = ['正常', '购物消费', '婚恋交友', '假冒身份', '钓鱼网站', '冒充公检法', '平台诈骗', '招聘兼职', '杀猪盘', '博彩赌博', '信贷理财', '刷单诈骗', '中奖诈骗']
+    var currentPage = 1;//当前页数
+    var pageSize = 10;//一页包含的条数
+    var buttonNumber;//按钮数量
+
+    window.onload = function () {
+        axios({
+            method: "get",
+            url: "http://localhost:8080/accusation/selectByPage?currentPage=" + currentPage + "&pageSize=" + pageSize
+        }).then(function (resp) {
+            let accusationBean = resp.data;
+            buttonNumber = accusationBean.code / pageSize;
+            let buttonUI = "";
+            let listUI = "";
+            document.getElementById("totalCount").innerHTML = "共" + accusationBean.code + "条数据";
+            for (let i = 0; i < accusationBean.rows.length; i++) {
+                listUI += "<tr>\n" +
+                    "                            <td>" + accusationBean.rows[i].url + "</a></td>\n" +
+                    "                            <td>" + type[accusationBean.rows[i].type] + "</td>\n" +
+                    "                            <td>" + accusationBean.rows[i].reason + "</td>\n" +
+                    "                            <td>" + accusationBean.rows[i].date + "</td>\n" +
+                    "                        </tr>"
+            }
+            document.getElementById("list").innerHTML = listUI;
+
+            for (let i = 0; i < buttonNumber; i++) {
+                buttonUI += "  <li class=\"item\" onclick='pagefunction(this)' value='" + (i + 1) + "'><a>" + (i + 1) + "</a></li>"
+            }
+            document.getElementById("buttonList").innerHTML = buttonUI;
+        });
+    }
+
+    function pagefunction(obj) {
+        var a = $(obj).attr("value");
+        currentPage = a;
+        axios({
+            method: "get",
+            url: "http://localhost:8080/accusation/selectByPage?currentPage=" + currentPage + "&pageSize=" + pageSize
+        }).then(function (resp) {
+            let accusationBean = resp.data;
+            let listUI = "";
+            for (let i = 0; i < accusationBean.rows.length; i++) {
+                listUI += "<tr>\n" +
+                    "                            <td>" + accusationBean.rows[i].url + "</a></td>\n" +
+                    "                            <td>" + type[accusationBean.rows[i].type] + "</td>\n" +
+                    "                            <td>" + accusationBean.rows[i].reason + "</td>\n" +
+                    "                            <td>" + accusationBean.rows[i].date + "</td>\n" +
+                    "                        </tr>"
+            }
+            document.getElementById("list").innerHTML = listUI;
+        });
+    }
+</script>
+
+</html>

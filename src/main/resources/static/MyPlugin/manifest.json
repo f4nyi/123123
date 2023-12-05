@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "诈骗网址识别",
+  "version": "1.0",
+  "description": "这是一个可以自动识别诈骗网址的插件。",
+  "icons": {
+    "128": "img/down.jpg",
+    "48": "img/down.jpg",
+    "16": "img/down.jpg"
+  },
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "action": {
+    "default_icon": "img/down.jpg",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ],
+      "js": [
+        "js/content_script.js"
+      ]
+    }
+  ],
+  "permissions":[
+    "tabs",
+    "activeTab"
+  ]
+}

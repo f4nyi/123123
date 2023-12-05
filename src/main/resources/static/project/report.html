@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析报告</title>
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/report.css">
+    <style>
+        /*.table-wrapper td {*/
+        /*    padding: 8px 194px 8px 10px!important;*/
+        /*}*/
+        table {
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        thead th{
+            width: 50%;
+            text-align: left;
+        }
+        tbody td{
+            width: 50%;
+            text-align: left;
+        }
+        .styles_icon {
+            line-height: 1.5715;
+            top: -70px;
+            left: -41px;
+            position: relative;
+            display: inline-block;
+            width: 250px;
+            height: 250px;
+            background: url(../images/malicious.svg) 50% no-repeat;
+            background-size: 175px 175px;
+            /*background-image: url(../images/malicious.svg);*/
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <!-- 网站最上方的导航栏模块 -->
+    <header>
+        <div class="sHeader">
+            <!-- 最左侧的logo设置 -->
+            <div class="sHeader_left">
+                <a class="sHeader_logo" href="index.html" style="display: block;"></a>
+            </div>
+            <!-- 右侧的三个导航 -->
+            <div class="sHeader_right">
+                <div class="sHeader_navList">
+                    <div class="sHeader_navItem">
+                        <a href="index.html">网址检测</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="analysis.html">检测结果</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="publicity.html">反诈宣传</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="chat.html">反诈智聊</a>
+                    </div>
+                    <div class="sHeader_navItem">
+                        <a href="api.html">API</a>
+                        <i class="sHeader_fire"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 网站主体架构 -->
+    <main class="content">
+        <div class="fileWrapper">
+            <div class="top">
+                <div class="fileSummaryContent">
+                    <div class="malicious">
+                        <i class="styles_icon" id="styles_icon"></i>
+                        <span class="style_text" id="style_text">恶意</span>
+                    </div>
+                    <div class="mainData">
+                        <div class="title">
+                            <span id="url"></span>
+                        </div>
+                        <div class="topData">
+                            <div class="subTitleItem">
+                                <span class="label">首次提交:</span>
+                                <span class="value">2023/03/11</span>
+                            </div>
+                            <div class="subTitleItem">
+                                <span class="label">末次提交:</span>
+                                <span class="value" id="time_top">2023/03/11</span>
+                            </div>
+                            <div class="subTitleItem">
+                                <span class="label">末次分析:</span>
+                                <span class="value" id="time">2023/03/11 16:13:07</span>
+                            </div>
+                        </div>
+                        <div class="data-list">
+                            <div class="data-item">
+                                <div class="label">HTTP响应：</div>
+                                <span class="value" id="stat"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-list">
+                <div class="section-list-content">
+                    <div class="multiEnginesWrapper">
+                        <div class="titleWrapper">
+                            <span class="title">引擎检测</span>
+                        </div>
+                        <div class="resultWrapper">
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>引擎</th>
+                                            <th>检出</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>支持向量机</td>
+                                            <td id="svmType"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>决策树</td>
+                                            <td id="dtType"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>随机森林</td>
+                                            <td id="rfType"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Adaboost</td>
+                                            <td id="adaboostType"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>GBD</td>
+                                            <td id="gbdType"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>NCM</td>
+                                            <td id="ncmType"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="multiEnginesWrapper">
+                        <div class="titleWrapper">
+                            <span class="title">特征信息</span>
+                        </div>
+                        <div class="resultWrapper">
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>特征</th>
+                                            <th>信息</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="fea">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <ul>
+                <li><a href="">网站简介</a></li>
+                <li><a href="">服务条款</a></li>
+                <li><a href="">联系我们</a></li>
+                <li><a href="">更新日志</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+<script src="../js/axios-0.18.0.js"></script>
+<script>
+        window.onload=function(){
+            var type=['正常','购物消费','婚恋交友','假冒身份','钓鱼网站','冒充公检法','平台诈骗','招聘兼职','杀猪盘','博彩赌博','信贷理财','刷单诈骗','中奖诈骗']
+            var fea_info=['图片数量','域内HTTP请求数','域外HTTP请求数','域内HTTPS请求数','域外HTTPS请求数','iframe标签数目','meta标签数目','embed标签数目','object标签数目','script标签数目','eval函数数量','setTimeout函数数目','setInterval函数数目','location函数数目','open函数数目','src标签数量','setAttribute标签数量','innerHTML标签数量','信息完整度','注册商','更新日期','创建日期','邮箱']
+            var URL;
+            var params=location.search.substr(1);
+            var arr=params.split('=');
+            if(typeof (arr[1])=="undefined"){
+                //策略
+                URL=1;
+            }
+            else {
+                URL=arr[1];
+            }
+            axios({
+                method: "get",
+                url: "http://localhost:8080/url/find?url="+URL
+            }).then(function (resp) {
+                let cheat_website=resp.data.data;
+                document.getElementById("url").innerHTML=cheat_website.url;
+                document.getElementById("stat").innerHTML=cheat_website.stat;
+                let arr=Object.values(cheat_website);
+                let cheat_websiteUI="";
+                for (i = 3; i < arr.length-7; i++){
+                    cheat_websiteUI+='<tr>\n' +
+                        '                                            <td>'+fea_info[i-3]+'</td>\n' +
+                        '                                            <td>'+arr[i]+'</td>\n' +
+                        '                                        </tr>'
+                }
+                document.getElementById("fea").innerHTML=cheat_websiteUI;
+                if(cheat_website.rfType==null || cheat_website.rfType=="-1")
+                    document.getElementById("rfType").innerHTML=cheat_website.rfType;
+                else
+                    document.getElementById("rfType").innerHTML=type[cheat_website.rfType];
+                if(cheat_website.svmType==null||cheat_website.svmType=="-1")
+                    document.getElementById("svmType").innerHTML=cheat_website.svmType;
+                else
+                    document.getElementById("svmType").innerHTML=type[cheat_website.svmType];
+                if(cheat_website.dtType==null ||cheat_website.dtType=="-1")
+                    document.getElementById("dtType").innerHTML=cheat_website.dtType;
+                else
+                    document.getElementById("dtType").innerHTML=type[cheat_website.dtType];
+                if(cheat_website.adaboostType==null ||cheat_website.adaboostType=="-1")
+                    document.getElementById("adaboostType").innerHTML=cheat_website.adaboostType;
+                else
+                    document.getElementById("adaboostType").innerHTML=type[cheat_website.adaboostType];
+                if(cheat_website.gbdType==null ||cheat_website.gbdType=="-1")
+                    document.getElementById("gbdType").innerHTML=cheat_website.gbdType;
+                else
+                    document.getElementById("gbdType").innerHTML=type[cheat_website.gbdType];
+                if(cheat_website.ncmType==null ||cheat_website.ncmType=="-1")
+                    document.getElementById("ncmType").innerHTML=cheat_website.ncmType;
+                else
+                    document.getElementById("ncmType").innerHTML=type[cheat_website.ncmType];
+                document.getElementById("time").innerHTML=cheat_website.timeChuo;
+                timer1 = cheat_website.timeChuo.split(' ')
+                document.getElementById("time_top").innerHTML=timer1[0];
+                //逻辑判断是否未恶意
+                let flag=[0,0,0,0,0,0,0,0,0,0,0,0,0];
+                let flag_0=0;
+                let flag_1=0;
+                for (let i = arr.length-7; i < arr.length-1; i++) {
+                    if(arr[i]==='0')
+                        flag_0++;
+                    else if (arr[i] !== ''){
+                        flag_1++;
+                        flag[arr[i]]++;
+                    }
+                }
+                if(flag_0>flag_1){
+                    document.querySelector('.styles_icon').style.backgroundImage = 'url(../images/clean.svg)';
+                    document.getElementById("style_text").innerHTML="安全";
+                    document.querySelector(".malicious").style.color="#3ABA6F";
+                }else{
+                    let max=flag[0];
+                    let max_i=0;
+                    for (let j = 1; j < flag.length; j++) {
+                        if(max<flag[j]){
+                            max=flag[j];
+                            max_i=j;
+                        }
+                    }
+                    console.log(type[max_i]);
+                    document.getElementById("style_text").innerHTML=type[max_i];
+                }
+
+            });
+        }
+
+</script>
+
+</html>

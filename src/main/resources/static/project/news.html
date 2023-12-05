@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>诈骗相关新闻</title>
+    <link rel="stylesheet" href="../css/news.css">
+    <style>
+        #title {
+            font-size: 32px;
+            text-align: center;
+            padding: 30px 0 0 0;
+        }
+        .middle_box .f-setting {
+            width: 500px;
+            margin: auto;
+        }
+
+        .middle_box #type {
+            font-size: 14px;
+            color: #999999;
+        }
+
+        .middle_box #time {
+            font-size: 14px;
+            color: #999999;
+        }
+        .middle_box div {
+            margin: 0;
+        }
+
+        .middle_box p {
+            text-indent: 2em;
+            color: #222;
+            font-size: 18px;
+            line-height: 34px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .middle_box img {
+            width: 100%;
+            height: auto;
+            margin: 20px auto;
+        }
+
+        .middle_box .btn {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .btn button {
+            background-color: #f66f6a;
+            color: white;
+            width: 100px;
+            height: 45px;
+            border: 0;
+            font-size: 16px;
+            box-sizing: content-box;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #a54b4a;
+        }
+    </style>
+</head>
+<body>
+<!-- 网站最上方的导航栏模块 -->
+<header>
+    <div class="sHeader">
+        <!-- 最左侧的logo设置 -->
+        <div class="sHeader_left">
+            <a class="sHeader_logo" href="index.html" style="display: block;"></a>
+        </div>
+        <!-- 右侧的三个导航 -->
+        <div class="sHeader_right">
+            <div class="sHeader_navList">
+                <div class="sHeader_navItem">
+                    <a href="index.html">网址检测</a>
+                </div>
+                <div class="sHeader_navItem">
+                    <a href="analysis.html">检测结果</a>
+                </div>
+                <div class="sHeader_navItem">
+                    <a href="publicity.html">反诈宣传</a>
+                </div>
+                <div class="sHeader_navItem">
+                    <a href="chat.html">反诈智聊</a>
+                </div>
+                <div class="sHeader_navItem">
+                    <a href="api.html">API</a>
+                    <i class="sHeader_fire"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+    <!-- 中间新闻主体 -->
+    <div class="middle_box">
+        <h1 id="title" >1111</h1>
+        <div class="f-setting">
+            <span id="type">类型：</span>
+            <span id="time">2019-07-03 16:31:47</span>
+            <a href="#" id="web">来源网站</a>
+        </div>
+         <hr>
+        <div id="content">
+
+            <p>近期，新冠病毒抗原检测试剂和部分药品比较难买，一些不法分子便动起了歪脑筋，在朋友圈、抖音等平台发布信息，兜售所谓的“渠道货”，在收款后拉黑删除受害人，实施诈骗。近日，重庆市合川区公安局民警结合“净网2023”专项行动，破获一起诈骗案件。
+            </p>
+            <div class="f-setting">
+                <img src="pictures/1/1/1.jpg" alt="" id=”img1”>
+            </div>
+            <p>2022年12月12日凌晨3点，合川市民方先生看到一位不熟悉的微信好友发布的朋友圈，称自己有抗原检测试剂出售。方先生有不少朋友都在求购抗原检测试剂，他便打算从这个微信好友处买入，再转次手赚点钱。随后，方先生和对方通过微信进行沟通。对方表示，自己手中有大量抗原检测试剂“渠道货”，每支3.7元，需要先交订金。
+            </p>
+            <p>随后，方先生向对方支付25600元订金，订购两万余支抗原检测试剂。</p>
+            <p>“货到了，货到了！”第二天中午，对方说货马上到重庆主城区，让方先生去收货。可左等右等，也没等来消息。方先生立即联系对方，至此，对方再也没回过消息。方先生这才反应过来，自己被骗了，并立即报警。合川警方随即对该案进行研判分析并明确了嫌疑人3名。目前，3名嫌疑人已全部到案，该案正在进一步侦办中。
+            </p>
+            <p>民警提示</p>
+            <p>近期不少诈骗分子在微信群、朋友圈、微博等平台上发布销售“新冠抗原检测试剂”“特效退烧药”等信息，当受害者与“商家”联系沟通时，对方会要求私下转款交易，诈骗成功后便会将受害者拉黑或者提供虚假订单号继续诈骗。
+            </p>
+            <p>药品安全及各类医疗器械安全关乎大众生命安全与健康！个人或经营主体在未取得经营资质情况下，不得私自销售各类药品及抗原检测试剂。如果确有购买需求，请认准正规药店、正规平台，避免上当受骗。</p>
+
+
+        </div>
+
+        <!--    下方按钮（测试部分）-->
+        <div class="btn">
+            <button id="previousNews" onclick="previousNews()">上一条</button>
+            <button id="nextNews" onclick="nextNews()">下一条</button>
+        </div>
+    </div>
+
+    <!--    axios插件，简化ajax请求-->
+    <script src="../js/axios-0.18.0.js"></script>
+    <script>
+        var id=0;
+        window.onload =function () {
+            var params=location.search.substr(1);
+            var arr=params.split('=');
+            if(typeof (arr[1])=="undefined"){
+                id=1;
+            }
+            else {
+                id=arr[1];
+            }
+                axios({
+                    method: "get",
+                    url: "http://localhost:8080/news/init2?id="+id
+                }).then(function (resp) {
+
+                    let News = resp.data;
+                    document.getElementById("title").innerHTML = News.title;
+                    document.getElementById("time").innerHTML = "时间：" + News.time;
+                    document.getElementById("web").href = News.website;
+                    document.getElementById("type").innerHTML = "类型：" + News.type_names[News.type-1];
+                    document.getElementById("content").innerHTML = News.content;
+                });
+        }
+
+        function previousNews() {
+            axios({
+                method: "get",
+                url: "http://localhost:8080/news/previous?id="+id
+            }).then(function (resp) {
+
+                let News = resp.data;
+                id=News.id;
+                document.getElementById("title").innerHTML = News.title;
+                document.getElementById("time").innerHTML = "时间：" + News.time;
+                document.getElementById("web").href = News.website;
+                document.getElementById("type").innerHTML = "类型：" + News.type_names[News.type-1];
+                document.getElementById("content").innerHTML = News.content;
+            });
+        }
+
+        function nextNews() {
+            axios({
+                method: "get",
+                url: "http://localhost:8080/news/next?id="+id
+            }).then(function (resp) {
+
+                let News = resp.data;
+                id=News.id;
+                document.getElementById("title").innerHTML = News.title;
+                document.getElementById("time").innerHTML = "时间：" + News.time;
+                document.getElementById("web").href = News.website;
+                document.getElementById("type").innerHTML = "类型：" + News.type_names[News.type-1];
+                document.getElementById("content").innerHTML = News.content;
+            });
+        }
+
+    </script>
+</body>
+</html>

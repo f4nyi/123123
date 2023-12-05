@@ -1,0 +1,312 @@
+.content {
+    background-color: #f7f9ff;
+    height: auto;
+}
+
+.fileWrapper {
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif !important;
+    color: rgba(0, 0, 0, .85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    font-feature-settings: "tnum", "tnum";
+    cursor: default;
+    text-align: left;
+    box-sizing: border-box;
+    background-color: #f7f9ff;
+    min-width: 1220px;
+}
+
+.top {
+    margin-bottom: 30px;
+}
+
+.fileSummaryContent {
+    position: relative;
+    display: flex;
+    width: 1220px;
+    padding: 40px 30px 0 16px;
+    margin: 0 auto;
+}
+
+.malicious {
+    position: relative;
+    flex: none;
+    width: 204px;
+    margin-right: 0;
+    color: #d81414;
+}
+
+.styles_icon {
+    line-height: 1.5715;
+    top: -70px;
+    left: -41px;
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    /*background: url(../images/clean.svg) 50% no-repeat;*/
+    background-size: 175px 175px;
+    /*background-image: url(../images/malicious.svg);*/
+}
+
+.style_text {
+    position: absolute;
+    top: 130px;
+    left: -42px;
+    width: 250px;
+    bottom: 2px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 29px;
+    text-align: center;
+}
+
+.mainData {
+    color: rgba(0, 0, 0, .85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    cursor: default;
+    text-align: left;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.title {
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    cursor: default;
+    text-align: left;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.title>span {
+    text-align: left;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    word-break: break-all;
+    box-sizing: border-box;
+}
+
+.topData {
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    text-align: left;
+    box-sizing: border-box;
+    /* display: flex; */
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.subTitleItem {
+    color: rgba(0, 0, 0, .85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    cursor: default;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.data-list {
+    font-size: 12px;
+    height: 24px;
+    margin-top: -3px;
+    margin-bottom: 7px;
+}
+
+.data-item {
+    display: flex;
+    align-items: center;
+    height: 16px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.section-list {
+    margin: -100px auto 0;
+    max-width: 1240px;
+    background-color: #fff;
+    padding-bottom: 40px;
+}
+
+.section-list-content {
+    box-sizing: border-box;
+    position: relative;
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.multiEnginesWrapper {
+    margin-bottom: 40px;
+}
+
+.titleWrapper {
+    padding: 20px 20px 0 0;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.titleWrapper>.title {
+    font-size: 20px;
+    line-height: 22px;
+    color: #1a1a1a;
+}
+
+.resultWrapper {
+    cursor: default;
+    text-align: left;
+    box-sizing: border-box;
+    margin-top: 16px;
+}
+
+.table-wrapper>table {
+    width: 100%;
+    text-align: left;
+    border-radius: 2px 2px 0 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: auto;
+}
+
+.table-wrapper {
+    text-align: left;
+    box-sizing: border-box;
+    clear: both;
+    max-width: 100%;
+    border-color: #dde0e6 !important;
+}
+
+.table-wrapper>thead {
+    font-size: 14px;
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-sizing: border-box;
+}
+
+.table-wrapper th {
+    border-color: #dde0e6 !important;
+    overflow-wrap: break-word;
+    position: relative;
+    text-align: left;
+    background: #fafafa;
+    transition: background .3s ease;
+    border-top-left-radius: 2px;
+    padding: 8px 10px;
+    background-color: #f2f4f7;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #666;
+    border-bottom: 1px solid #dde0e6;
+}
+
+.table-wrapper td {
+    border-color: #dde0e6 !important;
+    position: relative;
+    overflow-wrap: break-word;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background .3s;
+    word-break: break-all;
+    padding: 12px 10px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #333;
+    vertical-align: baseline;
+}
+
+
+
+footer {
+    margin: -1px;
+    border: 0;
+    font: inherit;
+    display: block;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+    padding: 24px 50px;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+    color: rgba(0, 0, 0, 0.65);
+    background: #f7f9ff;
+}
+
+footer div {
+    font-feature-settings: "tnum";
+    word-break: break-all;
+    -webkit-font-smoothing: antialiased;
+    color: rgba(0, 0, 0, 0.65);
+    box-sizing: border-box;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+ul {
+    font-feature-settings: "tnum";
+    word-break: break-all;
+    -webkit-font-smoothing: antialiased;
+    color: rgba(0, 0, 0, 0.65);
+    text-align: center;
+    box-sizing: border-box;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer ul li {
+    font-feature-settings: "tnum";
+    word-break: break-all;
+    -webkit-font-smoothing: antialiased;
+    color: rgba(0, 0, 0, 0.65);
+    box-sizing: border-box;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+    padding: 0 15px;
+}
+
+footer ul li a {
+    font-feature-settings: "tnum";
+    word-break: break-all;
+    -webkit-font-smoothing: antialiased;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    transition: color .3s;
+    touch-action: manipulation;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    background-color: transparent;
+    color: #666;
+}

@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "grpc.model";
+option java_outer_classname = "ModelProto";
+option objc_class_prefix = "AYA";
+
+package urlclassify;
+
+// The Classify service definition.
+service UrlClassify {
+  // Sends a url
+  rpc UrlClassify (UrlRequest) returns (UrlReply) {}
+}
+
+// The request message containing url.
+message UrlRequest {
+  string url = 1;
+}
+
+// The response message containing the results.
+message UrlReply {
+  string svm = 1;
+  string stat = 2 ; // request_code
+  string img_num = 3 ; // 图片数量
+  string domain_in_num = 4 ; // 域内HTTP请求数
+  string domain_out_num = 5; // 域外HTTP请求数
+  string domain_in_num1 = 6; // 域内HTTPS请求数
+  string domain_out_num1 = 7; // 域外HTTPS请求数
+  string iframe_num = 8; // iframe标签数目
+  string meta_num = 9; // meta标签数目
+  string embed_num = 10; // embed标签数目
+  string object_num = 11; // object标签数目
+  string script_num = 12; // script标签数目
+  string eval_num = 13; // eval函数数量
+  string setTimeout_num = 14; // setTimeout函数数目
+  string setInterval_num = 15; // setInterval函数数目
+  string location_num = 16; // location函数数目
+  string open_num = 17; // open函数数目
+  string src_num = 18; // src标签数量
+  string setAttribute_num = 19; // setAttribute标签数量
+  string innerHTML_num = 20; // innerHTML标
+  string whois_info = 21; // 信息完整度
+  string register = 22; // 注册商
+  string updated_date = 23; // 更新日期
+  string creation_date = 24; // 创建日期
+  string email = 25; // 邮箱
+}

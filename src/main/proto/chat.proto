@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "grpc.chat";
+option java_outer_classname = "ChatProto";
+option objc_class_prefix = "AYA";
+
+package chatclassify;
+
+// The Classify service definition.
+service ChatClassify {
+  // Sends a url
+  rpc ChatClassify (ChatRequest) returns (ChatReply) {}
+}
+
+// The request message containing url.
+
+message ChatRequest {
+  string history = 1;
+  string question = 2;
+}
+
+// The response message containing the results.
+message ChatReply {
+  string answer = 1;
+}

@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    color: rgba(0, 0, 0, .85);
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    background-color: #fff;
+    -webkit-font-feature-settings: "tnum", "tnum";
+    font-feature-settings: "tnum", "tnum";
+    width: 100%;
+    height: 100%;
+}
+header {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    --antd-wave-shadow-color: #1890ff;
+    --scroll-bar: 0;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif !important;
+    font-size: 14px;
+    font-variant: tabular-nums;
+    list-style: none;
+    font-feature-settings: "tnum", "tnum";
+    cursor: default;
+    text-align: left;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    color: rgba(0, 0, 0, .85);
+    line-height: 64px;
+    position: sticky;
+    height: 60px;
+    top: 0;
+    z-index: 200;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+    padding: 0;
+    min-width: 1140px;
+}
+
+ul {
+    list-style:none;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* 上导航 */
+.sHeader {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    --antd-wave-shadow-color: #1890ff;
+    --scroll-bar: 0;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif !important;
+    font-size: 14px;
+    font-variant: tabular-nums;
+    list-style: none;
+    font-feature-settings: "tnum", "tnum";
+    cursor: default;
+    text-align: left;
+    color: rgba(0, 0, 0, .85);
+    line-height: 64px;
+    margin: 0 auto;
+    max-width: 1440px;
+    min-width: 1140px;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.sHeader_left {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.sHeader_logo {
+    width: 165px;
+    height: 39px;
+    margin-right: 20px;
+    background: url(../images/logo.png) 0 0 no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.sHeader_right {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.sHeader_navList {
+    display: flex;
+    align-items: center;
+}
+
+.sHeader_navItem {
+    margin-right: 30px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.sHeader_navItem a:hover {
+    transition: 0.2s;
+}
+
+.sHeader_navItem a:hover {
+    font-size: 1.20em;
+    font-weight: bolder;
+}
+
+.sHeader_fire {
+    display: inline-block;
+    width: 14px;
+    height: 15px;
+    margin-left: 6px;
+    margin-top: -3px;
+    background: url(../images/fire.svg) 50% no-repeat;
+    background-size: cover;
+}
+/* 中间主体 */
+.middle_box {
+    width:1000px;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.middle_box div span,a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.middle_box div a {
+    color: #999999;
+}
+
+.middle_box div a:hover {
+    text-decoration: underline;
+}
+

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网址检测</title>
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+<!-- 网站最上方的导航栏模块 -->
+<header>
+    <div class="sHeader">
+        <!-- 最左侧的logo设置 -->
+        <div class="sHeader_left">
+            <a class="sHeader_logo" href="#" style="display: block;"></a>
+        </div>
+        <!-- 右侧的三个导航 -->
+        <div class="sHeader_right">
+            <div class="sHeader_navList">
+                <div class="sHeader_navItem">
+                    <a href="index.html">网址检测</a>
+                </div>
+                <div class="sHeader_navItem">
+                    <a href="analysis.html">检测结果</a>
+                </div>
+                <div class="sHeader_navItem">
+                    <a href="publicity.html">反诈宣传</a>
+                </div>
+                <div class="sHeader_navItem">
+                    <a href="chat.html">反诈智聊</a>
+                </div>
+                <div class="sHeader_navItem">
+                    <a href="api.html">API</a>
+                    <i class="sHeader_fire"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- 网站主体架构 -->
+<main class="content">
+    <div class="container">
+        <!-- 最上方的logo界面设计 -->
+        <div class="styles_logo"></div>
+        <!-- 上传分析界面设计 -->
+        <div class="styles_mainWrapper">
+            <!-- 头部设计 -->
+            <div class="styles_navWrapper">
+                <div class="styles_navItem">扫描URL</div>
+                <div class="styles_line"></div>
+            </div>
+            <!-- 主体分析框设计 -->
+            <div class="styles_scanUrlWrapper">
+                <div class="styles_scanUrlContent">
+                        <textarea placeholder="输入需分析的URL，“回车”提交即可" class="styles_textArea"
+                                  style="height: 209.6px; min-height: 209.6px; max-height: 356.6px; overflow-y: hidden; resize: none;"
+                                  spellcheck="false" id="URL"></textarea>
+                    <div class="styles_searchbtn" onclick="sendURL()">扫描</div>
+                </div>
+                <!-- 报错提示部分display:flex,boder:black -->
+                <div class="styles_errorTip" id="styles_errorTip" style="display: none">URL格式有误，请调整后重新输入</div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="../js/axios-0.18.0.js"></script>
+<script>
+    document.getElementById("URL").addEventListener("keydown", function (event) {
+            // console.log(event.key);
+            if (event.keyCode === 13) { // 判断是否按下回车键
+                event.preventDefault(); // 阻止默认行为（换行）
+                let URL = document.getElementById("URL").value;
+                // 判断url合法
+                var pattern = /^((https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w.-]*)*\/?)|(^(?!https?:\/\/)([\da-z.-]+)\.([a-z.]{2,6})([\/\w.-]*)*\/?)$/;
+                if (pattern.test(URL)) {
+                    console.log("URL合法");
+                    // 传参吊模型
+                    axios({
+                        method: "get",
+                        url: "http://localhost:8080/url/getURL?url=" + URL
+                    }).then(function (resp) {
+                        let a=resp.data;
+                        setTimeout(function () {
+                            window.open("report.html?url=" + URL);
+                        }, 500);
+                    });
+                    // alert("正在分析，请稍作等待……");
+                    //跳转页面
+
+                    // window.open("report.html?url="+URL);
+                    //新页面输入参数
+
+                } else {
+                    console.log("URL不合法");
+                    var element = document.getElementById('styles_errorTip');
+                    element.style.display = 'block';
+                }
+            }
+        }
+    )
+    ;
+
+    function sendURL() {
+        let URL = document.getElementById("URL").value;
+        // 判断url合法
+
+        // 传参吊模型
+
+        axios({
+            method: "get",
+            url: "http://localhost:8080/url/detectUrl?url=" + URL
+        }).then(function (resp) {
+            let a=resp.data;
+            setTimeout(function () {
+                window.open("report.html?url=" + URL);
+            }, 500);
+
+        });
+
+
+
+        //跳转页面
+        // setTimeout(function () {
+        //     window.open("report.html?url=" + URL);
+        // }, 8000);
+        // window.open("report.html?url="+URL);
+        //新页面输入参数
+
+    }
+</script>
+</body>
+
+</html>
